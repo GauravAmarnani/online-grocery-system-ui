@@ -32,9 +32,9 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class CustomerService {
-  private viewCustomersUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/admin/customers/view';
-  private registrationUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/customers/register';
-  private loginUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/customers/login'; 
+  private viewCustomersUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/admin/customers/view';
+  private registrationUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/customers/register';
+  private loginUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/customers/login'; 
 
   constructor(private http: HttpClient) { }
 
