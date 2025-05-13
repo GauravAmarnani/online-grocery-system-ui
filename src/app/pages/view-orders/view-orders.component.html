@@ -1,0 +1,61 @@
+<nav>
+  <div class="logo">Admin Panel</div>
+  <ul>
+    <li><a routerLink="/admin-home">Dashboard</a></li>
+    <li><a routerLink="/product-management">Products</a></li>
+    <li><a routerLink="/customer-management">Customers</a></li>
+    <li><a routerLink="/admin-login">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="search-bar">
+    <form (ngSubmit)="onSearch()">
+      <input type="text" [(ngModel)]="searchCustomerName" name="searchCustomerName" placeholder="Search order details by Customer Email" />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <h2>Order Details</h2>
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer Email</th>
+        <th>Order Date</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Item Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let order of filteredOrders; let i = index">
+        <ng-container *ngFor="let item of order.orderItems; let j = index">
+          <tr>
+            <td *ngIf="j === 0" [attr.rowspan]="order.orderItems.length">{{ order.id }}</td>
+            <td *ngIf="j === 0" [attr.rowspan]="order.orderItems.length">{{ order.customerEmail }}</td>
+            <td *ngIf="j === 0" [attr.rowspan]="order.orderItems.length">{{ order.orderDate | date:'medium' }}</td>
+
+            <td>{{ item.productName }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.pricePerItem | currency }}</td>
+            <td>{{ item.itemTotalPrice | currency }}</td>
+          </tr>
+        </ng-container>
+        <tr class="order-total">
+          <td colspan="6" style="text-align: right; font-weight: bold;">Order Total:</td>
+          <td style="font-weight: bold;">{{ order.totalAmount | currency }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .order-total {
+    border-top: 2px solid #ccc;
+    font-size: 1.1em;
+  }
+</style>

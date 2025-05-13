@@ -1,0 +1,37 @@
+<header>Welcome, <span id="customerName">{{ customerName }}</span></header>
+
+<div class="profile-container">
+  <h2>My Profile</h2>
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="profile-details">
+      <label for="custName">Name</label>
+      <input id="custName" formControlName="customerName" />
+      <div class="error-message" *ngIf="profileForm.get('customerName')?.invalid && profileForm.get('customerName')?.touched">
+        Name must be at least 3 letters and contain only alphabets.
+      </div>
+
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" /> <div class="error-message" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+        Please enter a valid email.
+      </div>
+
+      <label for="address">Address</label>
+      <input id="address" formControlName="address" />
+      <div class="error-message" *ngIf="profileForm.get('address')?.invalid && profileForm.get('address')?.touched">
+        Address is required.
+      </div>
+
+      <label for="contactNumber">Contact Number</label>
+      <input id="contactNumber" formControlName="contactNumber" maxlength="10" />
+      <div class="error-message" *ngIf="profileForm.get('contactNumber')?.invalid && profileForm.get('contactNumber')?.touched">
+        Contact number must be exactly 10 digits.
+      </div>
+    </div>
+
+    <div class="profile-actions">
+      <button type="submit" [disabled]="profileForm.invalid">Update</button>
+      <button routerLink="/home">Home</button>
+    </div>
+  </form>
+</div>

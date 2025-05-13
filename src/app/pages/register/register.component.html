@@ -1,0 +1,58 @@
+<body>
+<div class="hero-section">
+  <h1 style="font-size:54px">FRESH MART</h1>
+  <h2 style="font-style: italic;"> "Join Us Today!"</h2>
+  <p style="font-size:23px;">Create an account and start shopping for fresh groceries with ease - delivered straight to your doorstep.</p>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h1 style="color: white">Registration</h1>
+
+  <div class="input-box">
+    <label for="customerName">Customer Name</label>
+    <input id="customerName" formControlName="customerName" type="text" placeholder="Customer Name" maxlength="50">
+    <div class="error-message" *ngIf="customerName!.invalid && customerName!.touched">
+      Name must be at least 3 characters.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" placeholder="Email">
+    <div class="error-message" *ngIf="email!.invalid && email!.touched">
+      Invalid email.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" placeholder="Password" maxlength="30">
+    <i class="bx bxs-show password-toggle" (click)="togglePasswordVisibility()"></i>
+    <div class="error-message" *ngIf="password!.invalid && password!.touched">
+      Password must be at least 8 characters.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="address">Address</label>
+    <textarea id="address" formControlName="address" placeholder="Address" maxlength="100"></textarea>
+    <div class="error-message" *ngIf="address!.invalid && address!.touched">
+      Address is required.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="contactNumber">Contact Number</label>
+    <input id="contactNumber" formControlName="contactNumber" type="text" placeholder="Contact Number" maxlength="10">
+    <div class="error-message" *ngIf="contactNumber!.invalid && contactNumber!.touched">
+      Enter a valid 10-digit number.
+    </div>
+  </div>
+
+  <button type="submit" class="btn" [disabled]="registerForm.invalid">Register</button>
+
+  <div class="register-link">
+    <p>Have an Account? <a routerLink="/login">Login</a></p>
+  </div>
+</form>
+</body>

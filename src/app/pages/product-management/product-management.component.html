@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="search-bar">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+            <input type="text" formControlName="productName" placeholder="Search by Product Name" />
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h2 *ngIf="searchForm.get('productName')?.value">Search Results</h2>
+    <h2 *ngIf="!searchForm.get('productName')?.value">All Products</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Price</th>
+                <th>ProductCategory</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of filteredProducts">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.quantityAvailable }} in stock</td>
+                <td>
+                    <button class="delete-button" (click)="onDelete(product.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <a routerLink="/add-product" class="button-link">Add Product</a>
+        <a routerLink="/admin-home" class="button-link">Home</a>
+    </div>
+</div>

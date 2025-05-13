@@ -1,0 +1,38 @@
+<body>
+<div class="hero-section">
+  <h1 style="font-size:54px">FRESH MART</h1>
+  <h2 style="font-style: italic;">"Welcome Back"</h2>
+  <p style="font-size:23px;">
+    Log in to your account to enjoy a seamless shopping experience and get fresh groceries delivered to your doorstep.
+  </p>
+</div>
+
+<div class="wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h1>Login</h1>
+    <div class="input-box">
+      <input formControlName="customerID" type="text" placeholder="EmailID" required />
+      <i class="bx bxs-user"></i>
+    </div>
+
+    <div class="input-box">
+      <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" required maxlength="30" />
+      <i class="bx bxs-show password-toggle" (click)="togglePasswordVisibility()"></i>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+
+    <div class="bottom-box">
+      <button><a id="bottom_a" routerLink="/admin-login">Are you an Admin?</a></button>
+    </div>
+
+    <div class="register-link">
+      <p>Don't Have an Account? <a routerLink="/register">Register Now</a></p>
+    </div>
+
+    <div *ngIf="loginError" style="color: rgb(255, 191, 0); margin-top: 10px;">
+      <p>{{ loginError }}</p>
+    </div>
+  </form>
+</div>
+</body>

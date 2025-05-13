@@ -1,0 +1,44 @@
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/cart" class="active">Cart</a>
+</nav>
+
+<div class="cart-container">
+  <h1>Shopping Cart</h1>
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.product.name }}</td>
+          <td>Rs. {{ item.product.price.toFixed(2) }}</td>
+          <td>
+            <button (click)="decreaseQuantity(item)">-</button>
+            <input type="number" [value]="item.quantity" min="1" (change)="updateCartQuantity(item.product.id, $any($event.target).value)" style="width: 50px; text-align: center;">
+            <button (click)="increaseQuantity(item)">+</button>
+          </td>
+          <td>Rs. {{(item.product.price * item.quantity).toFixed(2)}}</td>
+          <td><button class="delete-btn" (click)="removeProduct(item.product.id)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary</h3>
+      <p><strong>Total Amount: Rs. {{ totalAmount.toFixed(2) }}</strong></p>
+      <button class="order-btn" (click)="placeOrder()" [disabled]="cartItems.length === 0">Order</button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</div>

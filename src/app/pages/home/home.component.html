@@ -1,0 +1,57 @@
+<div id="navbar-container">
+  <nav>
+    <a routerLink="/home">
+      <div class="logo"></div>
+    </a>
+
+    <ul>
+      <li><a routerLink="/home" class="nav-button"><i class="fas fa-home"></i> Home</a></li>
+      <li><a routerLink="/cart" class="nav-button"><i class="fas fa-shopping-cart"></i> Cart ({{ (cart | keyvalue)?.length }})</a></li>
+      <li><a routerLink="/my-profile" class="nav-button"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a routerLink="" class="nav-button"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Show search bar only if 'home=true' is in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchBar = document.getElementById("searchBar");
+
+      if (!urlParams.has("home") || urlParams.get("home") !== "true") {
+        searchBar.style.display = "none";
+      }
+    });
+  </script>
+</div>
+<div class="banner">
+  <div class="inner-banner">
+    <h1>Welcome  {{ username }}!</h1>
+    <h2>A grocery delivery service that doesn't hurt your wallet</h2>
+    <h2>Leave the grocery shopping to us</h2>
+    <button type="button" class="shop-btn" id="shop-btn" (click)="scrollToProducts()">Shop Now</button>
+  </div>
+</div>
+
+<section class="product-grid">
+  <div class="product-card" *ngFor="let product of products" id="product-card">
+    <img src="assets/images_new/{{ product.name | lowercase }}.jpg" alt="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    <h3>{{ product.category }}</h3>
+    <p>{{ product.description }}</p>
+    <p>Rs. {{ product.price.toFixed(2) }}</p>
+    <p [style.color]="product.quantityAvailable > 0 ? 'green' : 'red'">
+      {{ product.quantityAvailable > 0 ? 'In Stock' : 'Out of Stock' }}
+    </p>
+    <div class="quantity-controls">
+      <button (click)="decreaseQuantity(product)">-</button>
+      <input readonly type="number" [value]="product.selectedQuantity" min="0" [max]="product.quantityAvailable" (change)="updateCart(product.id, $any($event.target).value)" style="width: 50px; text-align: center;">
+      <button (click)="increaseQuantity(product)">+</button>
+    </div>
+  </div>
+</section>
+
+<div class="my-container">
+  <button type="button" class="my-button" (click)="goToCart()" [disabled]="(cart | keyvalue)?.length === 0">Go to Cart</button>
+</div>

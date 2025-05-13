@@ -1,0 +1,46 @@
+<nav>
+  <div class="logo"><a href="#" id="homepageLogo" routerLink="/admin-home">Admin Dashboard</a></div>
+  <ul>
+    <li><a routerLink="/admin-home" >Dashboard</a></li>
+    <li><a routerLink="/product-management">Products</a></li>
+    <li><a routerLink="/view-orders">Orders</a></li>
+    <li><a routerLink="/admin-login">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="search-bar">
+  <form (submit)="$event.preventDefault()">
+    <input type="text" [(ngModel)]="searchcustomerName" name="searchcustomerName" placeholder="Search by Customer Name">
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<div class="container">
+  <h2 *ngIf="searchcustomerName">Search Results</h2>
+  <h2 *ngIf="!searchcustomerName">All Customers</h2>
+
+  <table *ngIf="filteredCustomers.length > 0; else noResults">
+    <thead>
+      <tr>
+        <th>CustomerID</th>
+        <th>CustomerName</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>ContactNumber</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of filteredCustomers">
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.username }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.address }}</td>
+        <td>{{ customer.contactNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noResults>
+    <p>No customers found with the name: {{ searchcustomerName }}</p>
+  </ng-template>
+</div>

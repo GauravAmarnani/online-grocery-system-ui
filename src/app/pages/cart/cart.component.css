@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        nav {
+            background-color: #ff6f00;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #fdd835;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .cart-grid {
+            display: block;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        thead {
+            background: #064c4e;
+            color: white;
+        }
+
+        .product-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .summary {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .order-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #064c4e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background-color: #217275;
+        }
+
+        .empty-cart {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .empty-cart h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart a {
+            text-decoration: none;
+            color: #ff6f00;
+            font-weight: 500;
+            font-size: 18px;
+        }

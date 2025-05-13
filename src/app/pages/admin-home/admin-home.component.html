@@ -1,0 +1,55 @@
+<div class="admin-homepage">
+    <div class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul>
+        <p>Admin logged with:</p>
+        <p>ID: {{ adminId }}</p>
+        <p>Name: {{ adminName }}</p>
+      </ul>
+    </div>
+  
+    <div class="main-content">
+      <header>
+        <div class="header-container">
+          <div class="logo-container"></div>
+          <a (click)="logout()" class="logout-button">Logout</a>
+        </div>
+      </header><br><br><br>
+  
+      <section class="stats">
+        <div class="stat-card">
+          <h3>No Of. Orders</h3>
+          <p>{{ totalOrders }}</p>
+          <img src="assets/images_new/order-list-number.png" height="80px" width="80px">
+        </div>
+        <div class="stat-card">
+          <h3>Sales</h3>
+          <p>₹ {{ totalSales }}</p>
+          <img src="assets/images_new/online-sales-growth-number.png" height="80px" width="80px">
+        </div>
+        <div class="stat-card">
+          <h3>Total Customers</h3>
+          <p>{{ totalCustomers }}</p>
+          <img src="assets/images_new/customer-3d-render-icon-number.jpg" height="80px" width="80px">
+        </div>
+      </section><br><br><br>
+  
+      <section class="quick-links">
+        <div class="button-container">
+          <a routerLink="/add-product" class="button-link">
+            <i class="fas fa-plus"></i> Add Product
+          </a>
+          <a routerLink="/view-orders" class="button-link">
+            <i class="fas fa-list"></i> Orders Details
+          </a>
+          <a routerLink="/product-management" class="button-link">
+            <i class="fas fa-box"></i> Product Details
+          </a>
+          <a routerLink="/customer-management" class="button-link">
+            <i class="fas fa-users"></i> Customer Details
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+  

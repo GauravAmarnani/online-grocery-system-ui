@@ -1,0 +1,39 @@
+<div class="form-container">
+    <h1>Add Product</h1>
+  
+    <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" formControlName="productName" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productPrice">Product Price</label>
+        <input type="number" id="productPrice" formControlName="productPrice" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label for="productQuantity">Product Quantity</label>
+        <input type="number" id="productQuantity" formControlName="productQuantity" step="0.01" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productCategory">Product Category</label>
+        <input type="text" id="productCategory" formControlName="productCategory" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productDescription">Product Description</label>
+        <textarea id="productDescription" formControlName="productDescription" required></textarea>
+      </div>
+  
+     
+  
+      <button type="submit" class="submit-btn">Add Product</button>
+    </form>
+  </div>
+
+  <div class="navigation-buttons" style="margin-top: 15px; text-align: center;">
+    <button type="button" class="btn back-btn" routerLink="/admin-home">← Back to Welcome Page</button>
+  </div>
+  
