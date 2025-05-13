@@ -16,9 +16,9 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductService {
-  private viewProductsUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/shop/products'; 
-  private deleteProductUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/shop/products/delete'; 
-  private addProductUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/shop/products/add';   
+  private viewProductsUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/shop/products'; 
+  private deleteProductUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/shop/products/delete'; 
+  private addProductUrl = 'https://onlinegrocerybackend.gauravamarnani.in/api/shop/products/add';   
 
   constructor(private http: HttpClient) { }
 
