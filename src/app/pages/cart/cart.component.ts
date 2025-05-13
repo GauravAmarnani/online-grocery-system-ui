@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
       const cart = JSON.parse(storedCart);
       const productIds = Object.keys(cart).map(Number);
       if (productIds.length > 0) {
-        this.http.get<Product[]>('http://onlinegrocerybackend.gauravamarnani.in/api/shop/products').subscribe(
+        this.http.get<Product[]>('https://onlinegrocerybackend.gauravamarnani.in/api/shop/products').subscribe(
           (products) => {
             this.cartItems = products
               .filter(product => cart.hasOwnProperty(product.id))
@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
 
   increaseQuantity(item: { product: Product, quantity: number }): void {
     // Need to fetch the latest quantity available from the backend to prevent over-ordering
-    this.http.get<Product>(`http://onlinegrocerybackend.gauravamarnani.in/api/shop/products/${item.product.id}`).subscribe(
+    this.http.get<Product>(`https://onlinegrocerybackend.gauravamarnani.in/api/shop/products/${item.product.id}`).subscribe(
       (product) => {
         if (item.quantity < product.quantityAvailable) {
           item.quantity++;
@@ -129,7 +129,7 @@ export class CartComponent implements OnInit {
         return;
       }
 
-      this.http.post(`http://onlinegrocerybackend.gauravamarnani.in/api/shop/order/place-order/${customerId}`, cart).subscribe({
+      this.http.post(`https://onlinegrocerybackend.gauravamarnani.in/api/shop/order/place-order/${customerId}`, cart).subscribe({
         next: (response: any) => {
           console.log('Order placed successfully:', response);
           localStorage.removeItem('cart');
