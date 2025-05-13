@@ -38,7 +38,7 @@ export class MyProfileComponent implements OnInit {
 
   loadUserProfile(): void {
     if (this.userEmail) {
-      this.http.get<any>(`http://onlinegrocerybackend.gauravamarnani.in:8082/api/customers/profile/${this.userEmail}`).subscribe({
+      this.http.get<any>(`http://onlinegrocerybackend.gauravamarnani.in/api/customers/profile/${this.userEmail}`).subscribe({
         next: (data) => {
           this.customerName = data.username;
           this.profileForm.patchValue({
@@ -63,7 +63,7 @@ export class MyProfileComponent implements OnInit {
     if (this.profileForm.valid && this.userEmail) {
       const updatedProfile = this.profileForm.value;
 
-      this.http.put<any>(`http://onlinegrocerybackend.gauravamarnani.in:8082/api/customers/profile/${this.userEmail}`, updatedProfile).subscribe({
+      this.http.put<any>(`http://onlinegrocerybackend.gauravamarnani.in/api/customers/profile/${this.userEmail}`, updatedProfile).subscribe({
         next: (response) => {
           console.log('Profile updated successfully:', response);
           this.customerName = response.customerName; 
