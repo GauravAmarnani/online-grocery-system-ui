@@ -13,7 +13,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 export class AdminLoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
-  private apiUrl = 'http://onlinegrocerybackend.gauravamarnani.in:8081/login'; 
+  private apiUrl = 'http://onlinegrocerybackend.gauravamarnani.in/api/admin/login'; 
 
   constructor(
     private fb: FormBuilder,
