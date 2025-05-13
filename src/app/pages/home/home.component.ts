@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   loadProducts(): void {
-    this.http.get<Product[]>('http://onlinegrocerybackend.gauravamarnani.in/api/shop/products').subscribe(
+    this.http.get<Product[]>('https://onlinegrocerybackend.gauravamarnani.in/api/shop/products').subscribe(
       (data) => {
         this.products = data.map(product => ({ ...product, selectedQuantity: this.cart[product.id] || 0 }));
       },
