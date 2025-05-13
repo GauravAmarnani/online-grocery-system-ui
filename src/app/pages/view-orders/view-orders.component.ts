@@ -40,7 +40,7 @@ export class ViewOrdersComponent implements OnInit {
   }
 
   loadOrders(): void {
-    this.http.get<OrderDisplay[]>('http://onlinegrocerybackend.gauravamarnani.in/api/shop/order').subscribe({
+    this.http.get<OrderDisplay[]>('https://onlinegrocerybackend.gauravamarnani.in/api/shop/order').subscribe({
       next: (data) => {
         this.orders = data;
         this.filteredOrders = [...this.orders];
